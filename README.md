@@ -1,2 +1,7 @@
-# quiz-generator
-COMP 582 Project
+# COMP 582 - Quiz Generation Project
+
+## Installation
+
+Gradio highly recommends installing the package in a virtual environment.
+
+- [Installation guide](https://www.gradio.app/main/guides/installing-gradio-in-a-virtual-environment)
