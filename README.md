@@ -1,7 +1,24 @@
 # COMP 582 - Quiz Generation Project by Group P
 
+## Prerequisites
+
+- Python 3.12
+
 ## Installation
 
-Gradio highly recommends installing the package in a virtual environment.
-
-- [Installation guide](https://www.gradio.app/main/guides/installing-gradio-in-a-virtual-environment)
+1. Clone the repo
+   ```sh
+   git clone https://github.com/ftrbnd/quiz-generator.git
+   ```
+2. Install required packages
+   ```sh
+   make install
+   ```
+3. Activate the virtual environment
+   ```sh
+   make activate
+   ```
+4. Run gradio inside the virtual environment
+   ```sh
+   gradio src/app.py
+   ```

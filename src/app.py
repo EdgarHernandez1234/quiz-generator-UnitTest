@@ -10,8 +10,7 @@ def file_input():
 def textbox_output():
     return gr.Textbox(label="Generated Questions")
 
-with gr.Blocks(theme=gr.themes.Soft()) as demo:
-
+with gr.Blocks() as demo:
     with gr.Row():
         with gr.Column():
             file_input = gr.File(file_types=[".txt"], label="Upload a .txt file")
@@ -23,4 +22,4 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
     submit_btn.click(fn=generate_questions, inputs=file_input, outputs=output)
 
 if __name__ == "__main__":
-    demo.launch()
+    demo.launch(theme=gr.themes.Soft())
