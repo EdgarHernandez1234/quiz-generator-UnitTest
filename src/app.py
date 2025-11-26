@@ -1,25 +1,16 @@
 import gradio as gr
 
-def generate_questions(value):
-    print("Received file!", type(value))
-    return value
+import inputs.text_tab as text_tab, inputs.file_tab as file_tab
 
-def file_input():
-    return gr.File(file_types=[".txt"],label="Upload a .txt file")
-
-def textbox_output():
-    return gr.Textbox(label="Generated Questions")
-
-with gr.Blocks() as demo:
-    with gr.Row():
-        with gr.Column():
-            file_input = gr.File(file_types=[".txt"], label="Upload a .txt file")
-            submit_btn = gr.Button("Generate Questions", variant="primary")
-        
-        with gr.Column():
-            output = gr.Textbox(label="Generated Questions")
+with gr.Blocks(title="Automatic Quiz Generator") as demo:
+    gr.Markdown("""
+        # COMP 582 - Automatic Quiz Generator
+        ### Select your input method by selecting a tab
+    """)
     
-    submit_btn.click(fn=generate_questions, inputs=file_input, outputs=output)
+    with gr.Tabs():
+        text_tab.render()
+        file_tab.render()
 
 if __name__ == "__main__":
     demo.launch(theme=gr.themes.Soft())
