@@ -27,7 +27,7 @@ Unit Testing by Edgar Hernandez for User stories 2, 12, and 16
 
 1. Activate the virtual environment
    ```sh
-   source gradio-env
+   source gradio-env/bin/activate
    ```
    ```sh
    make activate
