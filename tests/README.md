@@ -6,10 +6,10 @@
 
 | ID  | User Story                                                                                                                                             | Implementation                     |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------- |
-| 2   | As a student, I want to upload my notes so that I can be quizzed on the subject matter                                                                 | [test_example.py](test_example.py) |
-| 12  | As an instructor, I want to be able to specify the question types so that students demonstrate their knowledge in different ways                       | [test_example.py](test_example.py) |
+| 2   | As a student, I want to upload my notes so that I can be quizzed on the subject matter                                                                 | [UnitTest2.py](UnitTest2.py) |
+| 12  | As an instructor, I want to be able to specify the question types so that students demonstrate their knowledge in different ways                       | [UnitTest12.py](UnitTest12.py) |
 | 13  | As a student, I want to set the difficulty level so that I can slowly improve my knowledge                                                             | [test_example.py](test_example.py) |
-| 16  | As a professor, I want to upload my materials in whatever file format I have (PDF, text, images) so that the system can create quizzes from any source | [test_example.py](test_example.py) |
+| 16  | As a professor, I want to upload my materials in whatever file format I have (PDF, text, images) so that the system can create quizzes from any source | [UnitTest16.py](UnitTest16.py) |
 | 65  | As a student, I want the system to automatically clean and structure my uploaded content so that irrelevant text doesn't interfere with the generation | [test_example.py](test_example.py) |
 
 ## Creating Questions
