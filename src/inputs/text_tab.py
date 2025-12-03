@@ -1,23 +1,53 @@
+import random
 from phases.quiz_generation import generate_fill_blank_questions
 import gradio as gr
 
-def generate_quiz_from_text(input: str, num_questions: int, question_types: list):
-    if not input.strip():
-        return "Please provide text to generate questions from."
-    
-    questions = generate_fill_blank_questions(input, num_questions)
+current_quiz_state = {
+    'questions': [],
+    'num_questions': 0,
+    'question_types': []
+}
 
+def format_quiz_markdown(questions: list, num_questions: int):
+    """Format given questions into markdown"""
     output = ""
+    
     if questions:
         output += "## Fill in the Blank Questions\n\n"
         for i, q in enumerate(questions, 1):
             output += f"**Q{i}.** {q['question']}\n\n"
             output += f"*Answer: {q['answer']}*\n\n"
-
+    
     return gr.Markdown(f"""
         \n\n# Generated Quiz ({num_questions} questions)
         \n\n{output}
         """)
+
+def generate_quiz_from_text(input: str, num_questions: int, question_types: list):
+    global current_quiz_state
+
+    if not input.strip():
+        return "Please provide text to generate questions from."
+    
+    questions = generate_fill_blank_questions(input, num_questions)
+
+    current_quiz_state['questions'] = questions
+    current_quiz_state['num_questions'] = num_questions
+    current_quiz_state['question_types'] = question_types
+
+    return format_quiz_markdown(questions, num_questions)
+
+def shuffle_quiz():
+    global current_quiz_state
+    
+    if not current_quiz_state['questions']:
+        return "Please generate a quiz first before shuffling!"
+    
+    shuffled_questions = current_quiz_state['questions'].copy()
+    random.shuffle(shuffled_questions)
+    
+    return format_quiz_markdown(shuffled_questions, current_quiz_state['num_questions'])
+
     
 def render():
     with gr.Tab("Text (prompt)"):
@@ -37,7 +67,9 @@ def render():
                 )
                 question_types = gr.CheckboxGroup(["Multiple choice", "True/false", "Short answer", "Open-ended", "Fill in the blank"], label="Question types", show_select_all=True)
 
-                generate_button = gr.Button("Generate", variant="primary")
+                with gr.Row():
+                    generate_button = gr.Button("Generate", variant="primary")
+                    shuffle_button = gr.Button("🔀 Shuffle", variant="secondary")
             
             with gr.Column():
                 text_output = gr.Markdown(label="Generated Quiz")
@@ -45,5 +77,10 @@ def render():
         generate_button.click(
             fn=generate_quiz_from_text,
             inputs=[text_input, num_questions,question_types],
+            outputs=text_output
+        )
+        shuffle_button.click(
+            fn=shuffle_quiz,
+            inputs=[],
             outputs=text_output
         )
