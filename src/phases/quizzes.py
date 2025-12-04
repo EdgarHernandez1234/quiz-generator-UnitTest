@@ -65,7 +65,11 @@ class Quiz:
         filename = "generated_quiz.md"
         with open(filename, "w") as f:
             f.write(self.markdown_result)
-        return (filename, gr.Markdown(self.markdown_result))
+        return (
+            filename,
+            gr.update(visible=True),
+            gr.Markdown(self.markdown_result)
+        )
     
     def analyze(self):
         analysis = "\n---\n## Analysis\n\n"
