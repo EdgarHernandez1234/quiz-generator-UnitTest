@@ -1,5 +1,5 @@
 # COMP 582 - Quiz Generation Project by Group P
-Unit Testing by Edgar Hernandez for User stories 2, 12, and 16
+Unit Testing by Edgar Hernandez for User stories 12 and 16
 ## Prerequisites
 
 - Python 3.12
