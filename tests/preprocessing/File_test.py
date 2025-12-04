@@ -2,6 +2,11 @@
 import pytest
 from unittest.mock import patch
 import gradio as gr
+from src.phases.quizzes import Quiz
 
 class TestFileValidation:
-  def FileTypesAcceptedTest():  
+  
+  @pytest.fixture
+  def FileTypesAcceptedTest(self):  
+    "These file types are supported"
+    return Quiz()
